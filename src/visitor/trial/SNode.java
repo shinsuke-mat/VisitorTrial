@@ -7,6 +7,10 @@ public class SNode extends Node {
 		this.body = body;
 	}
 	
+	public void accept0(Visitor visitor) {
+		visitor.visit(this);
+	}
+	
 	public String toString() {
 		return body;
 	}

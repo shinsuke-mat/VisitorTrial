@@ -24,7 +24,7 @@ public class VisitorTest {
 	@Test
 	public void test01() {
 		Visitor visitor = new Visitor();
-		Node root = new Node();
+		RNode root = new RNode();
 		root.accept(visitor);
 		assertEquals("node - ", out.toString());
 	}
@@ -36,7 +36,7 @@ public class VisitorTest {
 	@Test
 	public void test02() {
 		Visitor visitor = new Visitor();
-		Node root = new Node();
+		RNode root = new RNode();
 		root.addChild(new SNode("aaa"));
 		root.accept(visitor);
 		assertEquals("node - s(aaa) - ", out.toString());
@@ -49,7 +49,7 @@ public class VisitorTest {
 	@Test
 	public void test03() {
 		Visitor visitor = new Visitor();
-		Node root = new Node();
+		RNode root = new RNode();
 		root.addChild(new INode(100));
 		root.accept(visitor);
 		assertEquals("node - i(100) - ", out.toString());
@@ -59,8 +59,10 @@ public class VisitorTest {
 	 * Node.accept(Visitor)内での子ノードの再帰呼び出しが悪い？
 	 * じゃあ，ルートNodeを生成せず，直接リーフのSNodeを作ってvisit．
 	 * やっぱりだめ，Visitor.visit(Node)が呼ばれてしまう．
+	 * 
+	 * これはそもそも無理．acceptは直接呼び出さない．ルートからたどるべき．
 	 */
-	@Test
+	//@Test
 	public void test04() {
 		Visitor visitor = new Visitor();
 		SNode snode = new SNode("aaa");
@@ -68,11 +70,4 @@ public class VisitorTest {
 		assertEquals("s(aaa) - ", out.toString());
 	}
 
-	@Test
-	public void test05() {
-		Visitor visitor = new Visitor();
-		SNode snode = new SNode("aaa");
-		snode.accept(visitor);
-		assertEquals("s(aaa) - ", out.toString());
-	}
 }

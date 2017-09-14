@@ -3,7 +3,7 @@ package visitor.trial;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node {
+public abstract class Node {
 	List<Node> children = new ArrayList<>();
 
 	// 子の追加
@@ -11,6 +11,8 @@ public class Node {
 		children.add(child);
 	}
 
+	public abstract void accept0(Visitor visitor);
+	
 	// 再帰的なvisit & accept
 	public void accept(Visitor visitor) {
 		
@@ -19,7 +21,7 @@ public class Node {
 		// System.err.println(this.getClass().getName()); 
 		visitor.visit(this);
 		for (Node child : children) {
-			child.accept(visitor);
+			child.accept0(visitor);
 		}
 	}
 }
