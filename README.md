@@ -1,4 +1,5 @@
 # 誰か助けて
+**解決しました**
 
 ### 何をしたい？
 - ツリー構造にvisitorパターンを適用したい．
@@ -38,3 +39,8 @@
 - JDTの実装見るとこのやり方で正しく動いているっぽいけど，何かが足りない？？？
   - https://github.com/eclipse/eclipse.jdt.core/blob/BETA_JAVA8/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTNode.java
   - https://github.com/eclipse/eclipse.jdt.core/blob/BETA_JAVA8/org.eclipse.jdt.core/dom/org/eclipse/jdt/core/dom/ASTVisitor.java
+
+### 解決した
+- acceptをぶちまけるのが正解．
+  - JDTではaccept0()がNodeの抽象メソッドとして定義されていて，全継承クラスで実装されている．
+  - Javaでは親クラス内でのthisの型解決が，どうあがいても子と見なされないっぽい．
