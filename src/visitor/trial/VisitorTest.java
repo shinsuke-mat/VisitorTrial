@@ -30,40 +30,48 @@ public class VisitorTest {
 	}
 
 	/**
-	 * ルートNodeにStringNodeを追加して，ルートNodeにvisit．
-	 * Visitor.visit(StringNode)が動作せず，Visitor.visit(Node)が呼ばれてしまう．
+	 * ルートNodeにSNodeを追加して，ルートNodeにvisit．
+	 * Visitor.visit(SNode)が動作せず，Visitor.visit(Node)が呼ばれてしまう．
 	 */
 	@Test
 	public void test02() {
 		Visitor visitor = new Visitor();
 		Node root = new Node();
-		root.addChild(new StringNode("aaa"));
+		root.addChild(new SNode("aaa"));
 		root.accept(visitor);
 		assertEquals("node - s(aaa) - ", out.toString());
 	}
 
 	/**
-	 * test02の続き．じゃあIntegerNodeは？
+	 * test02の続き．じゃあINodeは？
 	 * 当然test02と同じくだめ
 	 */
 	@Test
 	public void test03() {
 		Visitor visitor = new Visitor();
 		Node root = new Node();
-		root.addChild(new IntegerNode(100));
+		root.addChild(new INode(100));
 		root.accept(visitor);
 		assertEquals("node - i(100) - ", out.toString());
 	}
 
 	/**
 	 * Node.accept(Visitor)内での子ノードの再帰呼び出しが悪い？
-	 * じゃあ，ルートNodeを生成せず，直接リーフのStringNodeを作ってvisit．
+	 * じゃあ，ルートNodeを生成せず，直接リーフのSNodeを作ってvisit．
 	 * やっぱりだめ，Visitor.visit(Node)が呼ばれてしまう．
 	 */
 	@Test
 	public void test04() {
 		Visitor visitor = new Visitor();
-		StringNode snode = new StringNode("aaa");
+		SNode snode = new SNode("aaa");
+		snode.accept(visitor);
+		assertEquals("s(aaa) - ", out.toString());
+	}
+
+	@Test
+	public void test05() {
+		Visitor visitor = new Visitor();
+		SNode snode = new SNode("aaa");
 		snode.accept(visitor);
 		assertEquals("s(aaa) - ", out.toString());
 	}

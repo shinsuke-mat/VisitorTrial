@@ -1,9 +1,9 @@
 package visitor.trial;
 
-public class IntegerNode extends Node {
+public class INode extends Node {
 	private Integer body;
 	
-	public IntegerNode(Integer body) {
+	public INode(Integer body) {
 		this.body = body;
 	}
 

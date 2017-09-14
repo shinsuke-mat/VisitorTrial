@@ -1,13 +1,14 @@
 package visitor.trial;
 
-public class StringNode extends Node {
+public class SNode extends Node {
 	private String body;
 	
-	public StringNode(String body) {
+	public SNode(String body) {
 		this.body = body;
 	}
 	
 	public String toString() {
 		return body;
 	}
+	
 }
