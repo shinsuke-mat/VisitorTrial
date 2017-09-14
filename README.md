@@ -21,7 +21,7 @@
 ```java
   Visitor visitor = new Visitor();
   SNode snode = new SNode("aaa");
-  snode.visit(visitor);  // Visitor.visit(Node)が呼ばれてしまう．Visitor.visit(SNode)が期待．
+  snode.accept(visitor);  // Visitor.visit(Node)が呼ばれてしまう．Visitor.visit(SNode)が期待．
 ```
 - どうやってもノードに対応するvisit(...)メソッドが呼ばれない．
 
