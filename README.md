@@ -28,6 +28,7 @@
 ### 手元で確認するためには？
 - VisitorTestクラスをJUnitテスト実行してください
 - 俺のexcpectとactualがきちんと書いています．
+- 全テストケースが正しく動作すればgod
 
 ### 仮説はある？
 - accept(Visitor)メソッドをNodeクラスから継承しているのが悪そう．
